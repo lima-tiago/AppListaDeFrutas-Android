@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:background="@android:color/white"
+    android:layout_marginBottom="5dp"
+    app:cardCornerRadius="10dp"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardImg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="0dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+
+
+            app:cardCornerRadius="30dp"
+            >
+
+            <ImageView
+                android:id="@+id/imgFruta"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@android:color/darker_gray"
+                />
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@id/cardBtn"
+            android:layout_toEndOf="@id/cardImg"
+
+            android:layout_centerInParent="true"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="6dp"
+
+
+            app:cardCornerRadius="10dp"
+            >
+
+            <TextView
+                android:id="@+id/txtNomeFruta"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:gravity="center"
+                android:textColor="@android:color/black"
+
+                android:background="#D6D6D7"
+                android:text="nome fruta"
+                android:textSize="25sp" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="10dp"
+            app:cardCornerRadius="10dp"
+            android:layout_centerVertical="true">
+
+            <Button
+                android:id="@+id/btnAddCart"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="#D6D6D7"
+                android:text="+"
+                android:textSize="25sp"/>
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
+
