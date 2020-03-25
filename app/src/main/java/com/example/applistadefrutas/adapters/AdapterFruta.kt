@@ -2,24 +2,23 @@ package com.example.applistadefrutas.adapters
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.applistadefrutas.Fruta
 import com.example.applistadefrutas.R
-import com.example.applistadefrutas.activities.Fruta
 import com.example.applistadefrutas.activities.FrutaActivity
 import com.example.applistadefrutas.activities.MainActivity
 import kotlinx.android.synthetic.main.cell_fruta.view.*
-import java.util.*
+import java.net.URL
 
 
-class AdapterFruta(
-    val vetFruta: Vector<Fruta>,
-    val vetCarrinho: Vector<Fruta>,
-    val context: Context
-): RecyclerView.Adapter<AdapterFruta.FrutaViewHolder>() {
+class AdapterFruta(val vetFruta: ArrayList<Fruta>, val context: Context): RecyclerView.Adapter<AdapterFruta.FrutaViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FrutaViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.cell_fruta,parent,false)
@@ -36,10 +35,6 @@ class AdapterFruta(
         holder.bindFruta(vetFruta[position])
 
         holder.itemView.btnAddCart.setOnClickListener {
-           // vetCarrinho.addElement(vetFruta[position])
-//            Toast.makeText(holder.itemView.context,vetFruta[position].nome + " adicionada ao carrinho",Toast.LENGTH_SHORT).show()
-            println(vetCarrinho.count())
-            // se carrinho.count > 1 mostrar layout de vizualizar carrinho
             (context as MainActivity).addCart(vetFruta[position])
         }
 
@@ -54,6 +49,14 @@ class AdapterFruta(
     class FrutaViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
         fun bindFruta(fruta: Fruta){
             itemView.findViewById<TextView>(R.id.txtNomeFruta).text = fruta.nome
+
+
+//            val mDrawableName = "logo_default"
+//            val resID: Drawable =
+//                getIdentifier(mDrawableName, "drawable", VerifyAccess.getPackageName())
+//            val new_image: Int = FrutaActivity::class.java.getResource(fruta.nome). //  getResources().getDrawable(R.drawable.loginbtn)
+            val image:Bitmap? = (itemView.context as MainActivity).getBitmapFromAssets(fruta.nome+".png")
+            itemView.findViewById<ImageView>(R.id.imgFruta).setImageBitmap(image)
         }
     }
 }
